@@ -8,21 +8,24 @@ public class Avião extends Thread {
 	private Semaphore sul;
 	public Avião (int j, Semaphore norte, Semaphore sul) {
 		this.j = j;
+		this.norte = norte;
+		this.sul = sul;
 	}
 	public void run() {
 		int Num = (int) (Math.random()*2);
 		if (Num == 0){
 			try {
 				norte.acquire();
-				long Tempo = (long) (Math.random()*5+3);
+				System.out.println("O avião "+j+" entrou na pista norte");
+				long Tempo = (long) (Math.random()*4001+3000);
 				System.out.println("O avião "+j+" esta manobrando");
 				sleep(Tempo);
 				System.out.println("O avião "+j+" esta taxiando");
-				sleep((long) (Math.random()*6+5));
+				sleep((long) (Math.random()*5001+5000));
 				System.out.println("O avião "+j+" esta decolando");
-				sleep((long) (Math.random()*4+1));
+				sleep((long) (Math.random()*3001+1000));
 				System.out.println("O avião "+j+" esta se afastando");
-				sleep((long) (Math.random()*6+3));
+				sleep((long) (Math.random()*5001+3000));
 			} catch (InterruptedException e) {	
 				e.printStackTrace();
 			}finally {
@@ -33,15 +36,16 @@ public class Avião extends Thread {
 			try {
 
 				sul.acquire();
-				long Tempo = (long) (Math.random()*5+3);
+				System.out.println("O avião "+j+" entrou na pista sul");
+				long Tempo = (long) (Math.random()*4001+3000);
 				System.out.println("O avião "+j+" esta manobrando");
 				sleep(Tempo);
 				System.out.println("O avião "+j+" esta taxiando");
-				sleep((long) (Math.random()*6+5));
+				sleep((long) (Math.random()*5001+5000));
 				System.out.println("O avião "+j+" esta decolando");
-				sleep((long) (Math.random()*4+1));
+				sleep((long) (Math.random()*3001+1000));
 				System.out.println("O avião "+j+" esta se afastando");
-				sleep((long) (Math.random()*6+3));
+				sleep((long) (Math.random()*5001+3000));
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			} finally {
